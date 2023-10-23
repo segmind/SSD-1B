@@ -3,11 +3,13 @@
 ![image/png](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/0Iu_0f0d1ihGy0YiOd9uS.png)
 
 
-## Model Description
+Model Description
 
-The Segmind Stable Diffusion Model is a 50% distilled version of the Stable Diffusion XL (SDXL), offering a 60% speedup while maintaining high-quality text-to-image generation capabilities. It has been trained on diverse datasets, including Grit and Midjourney scrape data, to enhance its ability to create a wide range of visual content based on textual prompts.
+The Segmind Stable Diffusion Model (SSD-1B) is a distilled 50% smaller version of the Stable Diffusion XL (SDXL), offering a 60% speedup while maintaining high-quality text-to-image generation capabilities. It has been trained on diverse datasets, including Grit and Midjourney scrape data, to enhance its ability to create a wide range of visual content based on textual prompts.
 
 This model employs a knowledge distillation strategy, where it leverages the teachings of several expert models in succession, including SDXL, ZavyChromaXL, and JuggernautXL, to combine their strengths and produce impressive visual outputs.
+
+Special thanks to the HF team 🤗 especially [Sayak](https://huggingface.co/sayakpaul), [Patrick](https://github.com/patrickvonplaten) and [Poli](https://huggingface.co/multimodalart) for their collaboration and guidance on this work.
 
 ## Usage:
 This model can be used via the 🧨 Diffusers library. 
@@ -52,7 +54,8 @@ image = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
 
 The SSD-1B Model is a 1.3B Parameter Model which has several layers removed from the Base SDXL Model
 
-![image/png](SDXL%20Pipeline%20Short.png)
+![image](https://github.com/segmind/SSD-1B/assets/82945616/4df4b27f-187b-43a9-a2df-b4d808e9262f)
+
 
 ### Training info
 

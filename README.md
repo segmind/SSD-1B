@@ -16,7 +16,7 @@ Try out the model at [Segmind SSD-1B](https://www.segmind.com/models/ssd-1b) for
 
 ## Image Comparision (SDXL-1.0 vs SSD-1B)
 
-![image](https://github.com/segmind/SSD-1B/assets/82945616/a149add3-cb8a-4b24-82e5-bf59dd0949b0)
+![image](https://github.com/segmind/SSD-1B/assets/82945616/a5583e8a-6a05-4680-a540-f80502feed0b)
 
 ## Usage:
 This model can be used via the 🧨 Diffusers library. 
@@ -61,8 +61,7 @@ image = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
 
 The SSD-1B Model is a 1.3B Parameter Model which has several layers removed from the Base SDXL Model
 
-![image](https://github.com/segmind/SSD-1B/assets/82945616/4df4b27f-187b-43a9-a2df-b4d808e9262f)
-
+![image](https://github.com/segmind/SSD-1B/assets/82945616/9e208225-2454-4b8c-b5e4-91e035c4208d)
 
 ### Training info
 

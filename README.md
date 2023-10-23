@@ -11,6 +11,14 @@ This model employs a knowledge distillation strategy, where it leverages the tea
 
 Special thanks to the HF team 🤗 especially [Sayak](https://huggingface.co/sayakpaul), [Patrick](https://github.com/patrickvonplaten) and [Poli](https://huggingface.co/multimodalart) for their collaboration and guidance on this work.
 
+## Demo
+
+Try out the model at [Segmind SSD-1B](https://www.segmind.com/models/ssd-1b) for ⚡ fastest inference. You can also try it on [🤗 Spaces](https://huggingface.co/spaces/segmind/Segmind-Stable-Diffusion)
+
+## Image Comparision (SDXL-1.0 vs SSD-1B)
+
+![image](https://github.com/segmind/SSD-1B/assets/82945616/a149add3-cb8a-4b24-82e5-bf59dd0949b0)
+
 ## Usage:
 This model can be used via the 🧨 Diffusers library. 
 

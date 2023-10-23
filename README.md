@@ -2,7 +2,7 @@
 
 ![ssd1b_panda_cover](https://github.com/segmind/SSD-1B/assets/82945616/da12cc15-6b88-445e-bc9a-0c0aa54755f1)
 
-Model Description
+## Model Description
 
 The Segmind Stable Diffusion Model (SSD-1B) is a distilled 50% smaller version of the Stable Diffusion XL (SDXL), offering a 60% speedup while maintaining high-quality text-to-image generation capabilities. It has been trained on diverse datasets, including Grit and Midjourney scrape data, to enhance its ability to create a wide range of visual content based on textual prompts.
 

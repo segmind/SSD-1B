@@ -76,9 +76,13 @@ These are the key hyperparameters used during training:
 
 ### Speed Comparision
 
-We have observed that SSD-1B is upto 60% faster than the Base SDXL Model. Below is a comparision on an A100 40GB.
+We have observed that SSD-1B is upto 60% faster than the Base SDXL Model. Below is a comparision on an A100 80GB.
 
-![image/png](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/f7BcTrz5PjYGC5htLUVge.png)
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/TyymF1OkUjXLrHUp1XF0t.png)
+
+Below are the speed up metrics on a RTX 4090 GPU.
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/moMZrlDr-HTFkZlqWHUjQ.png)
 
 ### Model Sources
 

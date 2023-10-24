@@ -82,10 +82,84 @@ We have observed that SSD-1B is upto 60% faster than the Base SDXL Model. Below 
 
 ### Model Sources
 
-The SSD-1B Model API can be accessed via the Segmind. For more information and access details, please visit [Segmind](https://www.segmind.com/models/ssd).
+The SSD-1B Model API can be accessed via [Segmind SSD-1B](https://www.segmind.com/models/ssd-1b). For more information and access details, please visit [Segmind](https://www.segmind.com/models/ssd).
 
-## Uses
+### Downstream Use
 
+The Segmind Stable Diffusion Model can also be used directly with the 🧨 Diffusers library training scripts for further training, including:
+
+- **[Fine-Tune](https://github.com/huggingface/diffusers/blob/main/examples/text_to_image/train_text_to_image_sdxl.py):**
+```bash
+export MODEL_NAME="segmind/SSD-1B"
+export VAE_NAME="madebyollin/sdxl-vae-fp16-fix"
+export DATASET_NAME="lambdalabs/pokemon-blip-captions"
+
+accelerate launch train_text_to_image_lora_sdxl.py \
+  --pretrained_model_name_or_path=$MODEL_NAME \
+  --pretrained_vae_model_name_or_path=$VAE_NAME \
+  --dataset_name=$DATASET_NAME --caption_column="text" \
+  --resolution=1024 --random_flip \
+  --train_batch_size=1 \
+  --num_train_epochs=2 --checkpointing_steps=500 \
+  --learning_rate=1e-04 --lr_scheduler="constant" --lr_warmup_steps=0 \
+  --mixed_precision="fp16" \
+  --seed=42 \
+  --output_dir="sd-pokemon-model-lora-sdxl" \
+  --validation_prompt="cute dragon creature" --report_to="wandb" \
+  --push_to_hub
+```
+- **[LoRA](https://github.com/huggingface/diffusers/blob/main/examples/text_to_image/train_text_to_image_lora_sdxl.py):**
+```bash
+export MODEL_NAME="segmind/SSD-1B"
+export VAE_NAME="madebyollin/sdxl-vae-fp16-fix"
+export DATASET_NAME="lambdalabs/pokemon-blip-captions"
+
+accelerate launch train_text_to_image_sdxl.py \
+  --pretrained_model_name_or_path=$MODEL_NAME \
+  --pretrained_vae_model_name_or_path=$VAE_NAME \
+  --dataset_name=$DATASET_NAME \
+  --enable_xformers_memory_efficient_attention \
+  --resolution=512 --center_crop --random_flip \
+  --proportion_empty_prompts=0.2 \
+  --train_batch_size=1 \
+  --gradient_accumulation_steps=4 --gradient_checkpointing \
+  --max_train_steps=10000 \
+  --use_8bit_adam \
+  --learning_rate=1e-06 --lr_scheduler="constant" --lr_warmup_steps=0 \
+  --mixed_precision="fp16" \
+  --report_to="wandb" \
+  --validation_prompt="a cute Sundar Pichai creature" --validation_epochs 5 \
+  --checkpointing_steps=5000 \
+  --output_dir="sdxl-pokemon-model" \
+  --push_to_hub
+```
+- **[Dreambooth LoRA](https://github.com/huggingface/diffusers/blob/main/examples/dreambooth/train_dreambooth_lora_sdxl.py):**
+```bash
+export MODEL_NAME="segmind/SSD-1B"
+export INSTANCE_DIR="dog"
+export OUTPUT_DIR="lora-trained-xl"
+export VAE_PATH="madebyollin/sdxl-vae-fp16-fix"
+
+accelerate launch train_dreambooth_lora_sdxl.py \
+  --pretrained_model_name_or_path=$MODEL_NAME  \
+  --instance_data_dir=$INSTANCE_DIR \
+  --pretrained_vae_model_name_or_path=$VAE_PATH \
+  --output_dir=$OUTPUT_DIR \
+  --mixed_precision="fp16" \
+  --instance_prompt="a photo of sks dog" \
+  --resolution=1024 \
+  --train_batch_size=1 \
+  --gradient_accumulation_steps=4 \
+  --learning_rate=1e-5 \
+  --report_to="wandb" \
+  --lr_scheduler="constant" \
+  --lr_warmup_steps=0 \
+  --max_train_steps=500 \
+  --validation_prompt="A photo of sks dog in a bucket" \
+  --validation_epochs=25 \
+  --seed="0" \
+  --push_to_hub
+```
 
 ### Direct Use
 
@@ -107,18 +181,5 @@ The SSD-1B Model is not suitable for creating factual or accurate representation
 
 ## Limitations and Bias
 
-### Limitations
-
-- **Photorealism:** The model does not achieve perfect photorealism and may produce images with artistic or stylized qualities.
-
-- **Legible Text:** Generating legible text within images is a challenge for the model, and text within images may appear distorted or unreadable.
-
-- **Compositionality:** Complex tasks involving composition, such as rendering images based on intricate descriptions, may pose challenges for the model.
-
-- **Faces and People:** While the model can generate a wide range of content, it may not consistently produce realistic or high-quality images of faces and people.
-
-- **Lossy Autoencoding:** The autoencoding aspect of the model is lossy, which means that some details in the input text may not be perfectly retained in the generated images.
-
-### Bias
-
-The SSD-1B Model is trained on a diverse dataset, but like all generative models, it may exhibit biases present in the training data. Users are encouraged to be mindful of potential biases in the model's outputs and take appropriate steps to mitig
+Limitations & Bias
+The SSD-1B Model has some challenges in embodying absolute photorealism, especially in human depictions. While it grapples with incorporating clear text and maintaining the fidelity of complex compositions due to its autoencoding approach, these hurdles pave the way for future enhancements. Importantly, the model's exposure to a diverse dataset, though not a panacea for ingrained societal and digital biases, represents a foundational step towards more equitable technology. Users are encouraged to interact with this pioneering tool with an understanding of its current limitations, fostering an environment of conscious engagement and anticipation for its continued evolution.

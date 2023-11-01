@@ -1,6 +1,6 @@
 # Segmind Stable Diffusion 1B (SSD-1B) Model Card
 
-![ssd_cover_panda](https://github.com/segmind/SSD-1B/assets/82945616/8990e259-6801-42fc-a747-f0ed34bcfd20)
+![Screenshot from 2023-11-01 23-23-41](https://github.com/segmind/SSD-1B/assets/82945616/b9321eb0-0eac-4105-8784-e1ab800ee200)
 
 ## Model Description
 

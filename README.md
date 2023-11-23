@@ -1,22 +1,27 @@
+
 # Segmind Stable Diffusion 1B (SSD-1B) Model Card
 
-![Screenshot from 2023-11-01 23-23-41](https://github.com/segmind/SSD-1B/assets/82945616/b9321eb0-0eac-4105-8784-e1ab800ee200)
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/WveKcu7q5PyZEwNezyyMC.png)
+
+## 🔥🔥Join our [Discord](https://discord.gg/rF44ueRG) to give feedback on our smaller v2 version and early access🔥🔥
+
+## 📣 AUTOMATIC1111 compatibility added. Supporting file [here](https://huggingface.co/segmind/SSD-1B/blob/main/SSD-1B-A1111.safetensors)
+
+## Demo
+
+Try out the model at [Segmind SSD-1B](https://www.segmind.com/models/ssd-1b?utm_source=hf) for ⚡ fastest inference. You can also try it on [🤗 Spaces](https://huggingface.co/spaces/segmind/Segmind-Stable-Diffusion)
 
 ## Model Description
 
-The Segmind Stable Diffusion Model (SSD-1B) is a distilled **50% smaller version** of the Stable Diffusion XL (SDXL), offering a **60% speedup** while maintaining high-quality text-to-image generation capabilities. It has been trained on diverse datasets, including Grit and Midjourney scrape data, to enhance its ability to create a wide range of visual content based on textual prompts.
+The Segmind Stable Diffusion Model (SSD-1B) is a **distilled 50% smaller** version of the Stable Diffusion XL (SDXL), offering a **60% speedup** while maintaining high-quality text-to-image generation capabilities. It has been trained on diverse datasets, including Grit and Midjourney scrape data, to enhance its ability to create a wide range of visual content based on textual prompts.
 
 This model employs a knowledge distillation strategy, where it leverages the teachings of several expert models in succession, including SDXL, ZavyChromaXL, and JuggernautXL, to combine their strengths and produce impressive visual outputs.
 
 Special thanks to the HF team 🤗 especially [Sayak](https://huggingface.co/sayakpaul), [Patrick](https://github.com/patrickvonplaten) and [Poli](https://huggingface.co/multimodalart) for their collaboration and guidance on this work.
 
-## Demo
-
-Try out the model at [Segmind SSD-1B](https://www.segmind.com/models/ssd-1b) for ⚡ fastest inference. You can also try it on [🤗 Spaces](https://huggingface.co/spaces/segmind/Segmind-Stable-Diffusion)
-
 ## Image Comparision (SDXL-1.0 vs SSD-1B)
 
-![image](https://github.com/segmind/SSD-1B/assets/82945616/a5583e8a-6a05-4680-a540-f80502feed0b)
+<img width="1257" alt="mOM_OMxbivVBELad1QQYj" src="https://github.com/segmind/SSD-1B/assets/95569637/c8638787-f8c1-4845-a9e3-1a826cc22cef">
 
 ## Usage:
 This model can be used via the 🧨 Diffusers library. 
@@ -44,8 +49,16 @@ prompt = "An astronaut riding a green horse" # Your prompt here
 neg_prompt = "ugly, blurry, poor quality" # Negative prompt here
 image = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
 ```
+### Update: Our model should now be usable in ComfyUI.
+### Please do use negative prompting, and a CFG around 9.0 for the best quality!
+### Model Description
 
-### Please do use negative prompting for the best quality!
+- **Developed by:** [Segmind](https://www.segmind.com/)
+- **Developers:** [Yatharth Gupta](https://huggingface.co/Warlord-K) and [Vishnu Jaddipal](https://huggingface.co/Icar).
+- **Model type:** Diffusion-based text-to-image generative model
+- **License:** Apache 2.0
+- **Distilled From** [stabilityai/stable-diffusion-xl-base-1.0](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0)
+
 
 ### Key Features
 
@@ -61,7 +74,7 @@ image = pipe(prompt=prompt, negative_prompt=neg_prompt).images[0]
 
 The SSD-1B Model is a 1.3B Parameter Model which has several layers removed from the Base SDXL Model
 
-![image](https://github.com/segmind/SSD-1B/assets/82945616/9e208225-2454-4b8c-b5e4-91e035c4208d)
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/Qa8Ow-moLQhOvzp-5kGt4.png)
 
 ### Training info
 
@@ -73,6 +86,23 @@ These are the key hyperparameters used during training:
 * Gradient accumulation steps: 4
 * Image resolution: 1024
 * Mixed-precision: fp16
+
+### Multi-Resolution Support
+
+![image/jpeg](https://cdn-uploads.huggingface.co/production/uploads/62039c2d91d53938a643317d/IwIaIB4nBdMx6Vs5q82cL.jpeg)
+
+SSD-1B can support the following output resolutions.
+
+* 1024 x 1024 (1:1 Square)
+* 1152 x 896 (9:7)
+* 896 x 1152 (7:9)
+* 1216 x 832 (19:13)
+* 832 x 1216 (13:19)
+* 1344 x 768 (7:4 Horizontal)
+* 768 x 1344 (4:7 Vertical)
+* 1536 x 640 (12:5 Horizontal)
+* 640 x 1536 (5:12 Vertical)
+    
 
 ### Speed Comparision
 
@@ -86,13 +116,30 @@ Below are the speed up metrics on a RTX 4090 GPU.
 
 ### Model Sources
 
-The SSD-1B Model API can be accessed via [Segmind SSD-1B](https://www.segmind.com/models/ssd-1b). For more information and access details, please visit [Segmind](https://www.segmind.com/models/ssd).
+For research and development purposes, the SSD-1B Model can be accessed via the Segmind AI platform. For more information and access details, please visit [Segmind](https://www.segmind.com/models/ssd-1b).
+
+## Uses
+
+
+### Direct Use
+
+The Segmind Stable Diffusion Model is suitable for research and practical applications in various domains, including:
+
+- **Art and Design:** It can be used to generate artworks, designs, and other creative content, providing inspiration and enhancing the creative process.
+
+- **Education:** The model can be applied in educational tools to create visual content for teaching and learning purposes.
+
+- **Research:** Researchers can use the model to explore generative models, evaluate its performance, and push the boundaries of text-to-image generation.
+
+- **Safe Content Generation:** It offers a safe and controlled way to generate content, reducing the risk of harmful or inappropriate outputs.
+
+- **Bias and Limitation Analysis:** Researchers and developers can use the model to probe its limitations and biases, contributing to a better understanding of generative models' behavior.
 
 ### Downstream Use
 
 The Segmind Stable Diffusion Model can also be used directly with the 🧨 Diffusers library training scripts for further training, including:
 
-- **[Fine-Tune](https://github.com/huggingface/diffusers/blob/main/examples/text_to_image/train_text_to_image_sdxl.py):**
+- **[LoRA](https://github.com/huggingface/diffusers/blob/main/examples/text_to_image/train_text_to_image_lora_sdxl.py):**
 ```bash
 export MODEL_NAME="segmind/SSD-1B"
 export VAE_NAME="madebyollin/sdxl-vae-fp16-fix"
@@ -108,11 +155,12 @@ accelerate launch train_text_to_image_lora_sdxl.py \
   --learning_rate=1e-04 --lr_scheduler="constant" --lr_warmup_steps=0 \
   --mixed_precision="fp16" \
   --seed=42 \
-  --output_dir="sd-pokemon-model-lora-sdxl" \
+  --output_dir="sd-pokemon-model-lora-ssd" \
   --validation_prompt="cute dragon creature" --report_to="wandb" \
   --push_to_hub
 ```
-- **[LoRA](https://github.com/huggingface/diffusers/blob/main/examples/text_to_image/train_text_to_image_lora_sdxl.py):**
+
+- **[Fine-Tune](https://github.com/huggingface/diffusers/blob/main/examples/text_to_image/train_text_to_image_sdxl.py):**
 ```bash
 export MODEL_NAME="segmind/SSD-1B"
 export VAE_NAME="madebyollin/sdxl-vae-fp16-fix"
@@ -134,7 +182,7 @@ accelerate launch train_text_to_image_sdxl.py \
   --report_to="wandb" \
   --validation_prompt="a cute Sundar Pichai creature" --validation_epochs 5 \
   --checkpointing_steps=5000 \
-  --output_dir="sdxl-pokemon-model" \
+  --output_dir="ssd-pokemon-model" \
   --push_to_hub
 ```
 - **[Dreambooth LoRA](https://github.com/huggingface/diffusers/blob/main/examples/dreambooth/train_dreambooth_lora_sdxl.py):**
@@ -164,20 +212,6 @@ accelerate launch train_dreambooth_lora_sdxl.py \
   --seed="0" \
   --push_to_hub
 ```
-
-### Direct Use
-
-The Segmind Stable Diffusion Model is suitable for research and practical applications in various domains, including:
-
-- **Art and Design:** It can be used to generate artworks, designs, and other creative content, providing inspiration and enhancing the creative process.
-
-- **Education:** The model can be applied in educational tools to create visual content for teaching and learning purposes.
-
-- **Research:** Researchers can use the model to explore generative models, evaluate its performance, and push the boundaries of text-to-image generation.
-
-- **Safe Content Generation:** It offers a safe and controlled way to generate content, reducing the risk of harmful or inappropriate outputs.
-
-- **Bias and Limitation Analysis:** Researchers and developers can use the model to probe its limitations and biases, contributing to a better understanding of generative models' behavior.
 
 ### Out-of-Scope Use
 
